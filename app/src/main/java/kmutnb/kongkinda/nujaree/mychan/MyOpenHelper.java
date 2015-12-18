@@ -11,8 +11,7 @@ public class MyOpenHelper extends SQLiteOpenHelper{
 
     //Explicit
     private static final String DATABASE_NAME = "chan.db" ;
-    private static final int DATABASE_VERSION = 1;
-    private static final String CREATE_TABLE_CHAN = "create table chanTABLE (_id integer primary key,Title text,Head text,Detail text,Source text, Lat text,Lng text,Review text);";
+    private static final int DATABASE_VERSION = 1;    private static final String CREATE_TABLE_CHAN = "create table chanTABLE (_id integer primary key, Category text,Title text,Head text,Detail text,Source text, Lat text,Lng text,Review text);";
 
 
 

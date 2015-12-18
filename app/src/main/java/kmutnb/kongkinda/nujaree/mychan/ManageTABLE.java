@@ -15,6 +15,7 @@ public class ManageTABLE {
 
     public static final String TABLE_CHAN = "chanTABLE";
     public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_CATEGORY = "Category";
     public static final String COLUMN_TITLE = "Title";
     public static final String COLUMN_HEAD = "Head";
     public static final String COLUMN_DETAIL = "Detail";
@@ -35,9 +36,10 @@ public class ManageTABLE {
 
 
     //Add New Value to SQLite
-    public long addValue(String strTitle,String strHead,String strDetail,String strSource,String strLat,String strLng,String strReview) {
+    public long addValue(String strCategory,String strTitle,String strHead,String strDetail,String strSource,String strLat,String strLng,String strReview) {
 
         ContentValues objContentValues = new ContentValues();
+        objContentValues.put(COLUMN_CATEGORY,strCategory);
         objContentValues.put(COLUMN_TITLE,strTitle);
         objContentValues.put(COLUMN_HEAD,strHead);
         objContentValues.put(COLUMN_DETAIL,strDetail);
