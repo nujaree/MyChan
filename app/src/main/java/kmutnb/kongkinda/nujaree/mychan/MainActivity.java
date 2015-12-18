@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Tester Add Value
-        // objManageTABLE.addValue("TestCat", "TestTitle", "นี่หัวข้อข่าว", "detail", "source", "Lat", "lng", "review");
+        objManageTABLE.addValue("TestCat", "TestTitle", "นี่หัวข้อข่าว", "detail", "source", "Lat", "lng", "review");
 
     }   // Main Method
 }   // Main Class
