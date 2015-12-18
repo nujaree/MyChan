@@ -3,6 +3,8 @@ package kmutnb.kongkinda.nujaree.mychan;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchTitleEditText;
     private Spinner categorySpinner;
     private ListView titleListView;
+    private String searchTitleString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //bind Widget
-
+        bindWidget();
         //Connected Database
         objManageTABLE = new ManageTABLE(this);
 
@@ -36,6 +39,49 @@ public class MainActivity extends AppCompatActivity {
         synXMLtoSQLite();
 
     }   // Main Method
+
+    private void bindWidget() {
+        searchTitleEditText = (EditText) findViewById(R.id.editText);
+        categorySpinner = (Spinner) findViewById(R.id.spinner);
+        titleListView = (ListView) findViewById(R.id.listView);
+    }
+
+    public void clickSearch(View view) {
+
+        searchTitleString = searchTitleEditText.getText().toString().trim();
+
+        //Check Space
+        if (searchTitleString.equals("")) {
+
+            //Have Space
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.myDialog(MainActivity.this,"Have Space","กรุณากรอกช่องค้นหาด้วยค่ะ");
+        } else {
+
+            //No Space
+            checkSearchTitle();
+
+        }
+    } //clickSearch
+
+    private void checkSearchTitle() {
+
+        try {
+
+            String[] strRrsult = objManageTABLE.searchTitle(searchTitleString);
+            Log.d("Chan"," Head ==>" + strRrsult[3]);
+
+        } catch (Exception e) {
+            MyAlertDialog objMyAlertDialog = new MyAlertDialog();
+            objMyAlertDialog.myDialog(MainActivity.this,"ไม่มีสถานที่ท่องเที่ยวนี้","ไม่มีสถานที่ท่องเที่ยวนี้ในฐานข้อมูลของเรา ");
+        }
+
+    }  // checkSearchTitle
+
+    public void clickListAll(View view) {
+
+    }
+
 
     private void synXMLtoSQLite() {
 
